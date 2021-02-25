@@ -6,6 +6,6 @@ target 'ReactiveWorkshop' do
   use_frameworks!
 
   # Pods for ReactiveWorkshop
-  pod 'RxSwift', '5.1.1'
+  pod 'RxSwift'
 
 end
