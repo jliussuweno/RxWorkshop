@@ -30,6 +30,11 @@ let video = Observable.of(
 )
 
 /// Perform `Filter` to the observable and subscribe to the result
-
+let filteredVideo = video.filter{ video -> Bool in
+    video.length > 8
+}
+filteredVideo.subscribe(onNext: { video in
+    print(">>> \(video.title)")
+}).disposed(by: disposeBag)
 
 //: [Next](@next)

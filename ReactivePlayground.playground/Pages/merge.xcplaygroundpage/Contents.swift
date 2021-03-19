@@ -21,8 +21,14 @@ let atta = Observable.of("video atta 1", "video atta 2")
 
 /// Observable of videos uploaded by Kekeyi
 let kekeyi = Observable.of("video kekeyi 1")
+let deddy = Observable.of("video deddy 1")
         
 /// `Merge` the two observables and subscribe to the result
 
+let combinedYoutuber = Observable.merge(atta, kekeyi, deddy)
+
+combinedYoutuber.subscribe(onNext: { video in
+    print(">>> Tokopedia Publish : \(video)")
+}).disposed(by: disposeBag)
 
 //: [Next](@next)

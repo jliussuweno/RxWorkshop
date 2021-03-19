@@ -21,6 +21,11 @@ var disposeBag = DisposeBag()
 let keyword = Observable.of("k", "ko", "kop", "kopi")
     
 /// Apply `debounce` to the observable and subscribe to the result
+let debounceKeyword = keyword.debounce(.seconds(1), scheduler: MainScheduler.instance)
+
+debounceKeyword.subscribe(onNext: { key in
+    print(">>> \(key)")
+}).disposed(by: disposeBag)
 
 
 //: [Next](@next)

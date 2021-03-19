@@ -24,7 +24,7 @@ var wibSession: Int = 1
 /// List of Korean artists that will perform in WIB
 let koreanArtist = Observable<String>.from(["BTS", "BlackPink", "Twice"])
     .with(interval: .seconds(3))
-    .debug("Korean artist ", trimOutput: true)
+//    .debug("Korean artist ", trimOutput: true)
 
 /// List of Indonesian artists that will perform in WIB
 let indonesianArtist = Observable<String>.from(["Wali", "ST12", "Raisa"])
@@ -32,6 +32,24 @@ let indonesianArtist = Observable<String>.from(["Wali", "ST12", "Raisa"])
     .debug("Indonesian artist ", trimOutput: true)
 
 /// Combining two observables with `combineLatest` operator and subscribe to the result
+let combineLatest = Observable.combineLatest(koreanArtist, indonesianArtist)
+
+//combineLatest.subscribe(onNext: { artistKorea, artistIndo in
+//    print(">> WIB - \(wibSession): \(artistKorea) & \(artistIndo)")
+//    wibSession += 1
+//}).disposed(by: disposeBag)
+
+
+let number = Observable<Int>.from([1,2,3])
+    .with(interval: .seconds(5))
+//    .debug("Indonesian artist ", trimOutput: true)
+
+let combineDifferent = Observable.combineLatest(koreanArtist, number)
+
+combineDifferent.subscribe(onNext: { artisKorea, angka in
+    print(">>> Wib : \(wibSession) adalah \(artisKorea) & \(angka)")
+    wibSession += 1
+}).disposed(by: disposeBag)
 
 
 

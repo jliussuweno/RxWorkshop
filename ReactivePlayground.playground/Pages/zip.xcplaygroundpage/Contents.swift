@@ -27,7 +27,14 @@ let radityaDika = Observable.of("Raditya: Video 2020", "Raditya: Video 2021")
 let raffiAhmad = Observable.of("Raffi: Video 2020", "Raffi: Video 2021")
 let corbuzier = Observable.of("Corbuzier: Video 2020", "Corbuzier: Video 2021")
 
+
 /// `Zip` the three observables and subscribe to the result
+let tokopediaRewind = Observable.zip(radityaDika, raffiAhmad, corbuzier)
+
+tokopediaRewind.subscribe(onNext: { videoRadit, videoRaffi, videoDeddy in
+    print(">>> Rewind \(year): \(videoRadit), \(videoRaffi), \(videoDeddy)")
+    year += 1
+}).disposed(by: disposeBag)
 
 
 //: [Next](@next)

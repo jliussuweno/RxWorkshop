@@ -24,6 +24,12 @@ var disposeBag = DisposeBag()
 let comments = Observable.of("firstComment", "secondComment", "thirdComment")
 
 /// Apply `throttle` to the observable and subscribe to the result
+let throttleComment = comments.throttle(.seconds(1),latest: false, scheduler: MainScheduler.instance)
+
+
+throttleComment.subscribe(onNext: { comment in
+    print(">>> \(comment)")
+}).disposed(by: disposeBag)
 
 
 //: [Next](@next)
